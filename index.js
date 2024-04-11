@@ -33,13 +33,16 @@ app.get('/feed', async (req, res) => {
       const post = {
         author: $(element).find('.tgme_widget_message_owner_name').text().trim(),
         timestamp: $(element).find('.time').text().trim(),
-        content: $(element).find('.tgme_widget_message_text').text().trim(),
+        content: $(element).find('.tgme_widget_message_text').html(), // Use .html() instead of .text()
         url: `https://t.me${$(element).find('.tgme_widget_message_date').attr('href')}`,
+        image: $(element).find('.tgme_widget_message_photo_wrap img').attr('src') || '',
       };
       posts.push(post);
     });
 
-    res.json(posts);
+    const latestPosts = posts.slice(-3).reverse();
+
+    res.json(latestPosts);
   } catch (error) {
     console.error('Error fetching feed:', error);
     res.status(500).json({ error: 'Internal Server Error' });
