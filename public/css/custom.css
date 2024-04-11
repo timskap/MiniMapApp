@@ -35,3 +35,7 @@
         background-position: center;
         z-index: -1;
       }
+      .pinned-post {
+        font-weight: bold;
+        color: #ff6600;
+      }
