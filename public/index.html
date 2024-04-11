@@ -361,40 +361,51 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script>
             fetch('/feed')
-              .then(response => response.json())
-              .then(posts => {
-                const feedContainer = document.querySelector('.feedContainer');
+            .then(response => response.json())
+            .then(posts => {
+              const feedContainer = document.querySelector('.feedContainer');
           
-                posts.forEach(post => {
-                  const postElement = document.createElement('div');
-                  postElement.classList.add('post');
-          
-                  // Replace <br> tags with <p> tags
-                  const contentWithParagraphs = post.content ? post.content.replace(/<br>/g, '</p><p>') : '';
-          
-                  // Generate the HTML for the post
-                  postElement.innerHTML = `
-                    <!-- <h3>${post.author}</h3> -->
-                    <p>${post.timestamp}</p>
-                    ${post.image ? `<img src="${post.image}" alt="Post Image" class="img-fluid">` : ''}
-                    ${post.video ? `<video src="${post.video}" controls playsinline class="img-fluid video-player" ${post.videoBackground ? `poster="${post.videoBackground}"` : ''}></video>` : ''}
-                    <div>${contentWithParagraphs}</div>
-                    <!-- <a href="${post.url}" target="_blank">View on Telegram</a> -->
-                  `;
-          
-                  feedContainer.appendChild(postElement);
-                });
-              })
-              .catch(error => {
-                console.error('Error fetching feed:', error);
+              // Separate posts with '#Update' hashtag
+              const updatedPosts = posts.filter(post => {
+                const content = post.content || '';
+                return content.includes('#<b>Update</b>');
               });
           
-            const videoPlayers = document.querySelectorAll('.video-player');
-            videoPlayers.forEach(player => {
-              player.addEventListener('click', () => {
-                player.play();
+              const otherPosts = posts.filter(post => !updatedPosts.includes(post));
+          
+              // Combine the two arrays, with updatedPosts first
+              const combinedPosts = [...updatedPosts, ...otherPosts];
+          
+              combinedPosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+          
+                // Replace <br> tags with <p> tags
+                   
+                    const contentWithParagraphs = post.content ? post.content.replace(/<br>/g, '</p><p>').replace(/<a href="[^"]*">#(.*?)<\/a>|#/g, '$1') : '';
+                // Generate the HTML for the post
+                postElement.innerHTML = `
+                  <!-- <h3>${post.author}</h3> -->
+                  <p>${post.timestamp}</p>
+                  ${post.image ? `<img src="${post.image}" alt="Post Image" class="img-fluid">` : ''}
+                  ${post.video ? `<video src="${post.video}" controls playsinline class="img-fluid video-player" ${post.videoBackground ? `poster="${post.videoBackground}"` : ''}></video>` : ''}
+                  <div>${contentWithParagraphs.replace(/#(\w+)/g, '$1')}</div>
+                  <!-- <a href="${post.url}" target="_blank">View on Telegram</a> -->
+                `;
+          
+                feedContainer.appendChild(postElement);
               });
+            })
+            .catch(error => {
+              console.error('Error fetching feed:', error);
             });
+          
+          const videoPlayers = document.querySelectorAll('.video-player');
+          videoPlayers.forEach(player => {
+            player.addEventListener('click', () => {
+              player.play();
+            });
+          });
           </script>
     </body>
 </html>
