@@ -128,9 +128,13 @@
                     <div class="col-lg-3">
                         <!-- Feed -->
                         <h3>Updates</h3>
-                        <div class="feedContainer">
+                        <div class="scroll-container">
+                            <div class="feedContainer"></div>
+                        
                         </div>
+                        <div class="col text-center">
                         <a href="https://t.me/radar_app" role="button" class="btn btn-dark btn-lg">Read More</a>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -360,29 +364,30 @@
               .then(response => response.json())
               .then(posts => {
                 const feedContainer = document.querySelector('.feedContainer');
-          
+            
                 posts.forEach(post => {
                   const postElement = document.createElement('div');
                   postElement.classList.add('post');
-          
+            
                   // Replace <br> tags with <p> tags
-                  const contentWithParagraphs = post.content.replace(/<br>/g, '</p><p>');
-          
+                  const contentWithParagraphs = post.content ? post.content.replace(/<br>/g, '</p><p>') : '';
+            
                   // Generate the HTML for the post
                   postElement.innerHTML = `
-                 <!--    <h3>${post.author}</h3> *-->
+                    <!-- <h3>${post.author}</h3> -->
                     <p>${post.timestamp}</p>
-                    ${post.image ? `<img src="${post.image}" alt="Post Image">` : ''}
-                    <p>${contentWithParagraphs}</p>
-                 <!--    <a href="${post.url}" target="_blank">View on Telegram</a> *-->
+                    ${post.image ? `<img src="${post.image}" alt="Post Image" class="img-fluid">` : ''}
+                    ${post.video ? `<video src="${post.video}" controls class="img-fluid"></video>` : ''}
+                    <div>${contentWithParagraphs}</div>
+                    <!-- <a href="${post.url}" target="_blank">View on Telegram</a> -->
                   `;
-          
+            
                   feedContainer.appendChild(postElement);
                 });
               })
               .catch(error => {
                 console.error('Error fetching feed:', error);
               });
-          </script>
+            </script>
     </body>
 </html>

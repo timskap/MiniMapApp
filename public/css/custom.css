@@ -12,3 +12,12 @@
   .post p {
     margin-bottom: 0px;
   }
+
+  .scroll-container {
+    height: 500px;
+    overflow-y: auto;
+     margin-bottom: 10px; 
+    padding: 10px;
+    /* border: 1px solid #ccc;
+    border-radius: 20px; */
+  }

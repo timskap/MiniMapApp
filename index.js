@@ -29,18 +29,47 @@ app.get('/feed', async (req, res) => {
 
     const posts = [];
 
-    $('.tgme_widget_message').each((index, element) => {
+    $('.tgme_widget_message_wrap').each((index, element) => {
+      const $messageWrap = $(element);
+      const $message = $messageWrap.find('.tgme_widget_message');
+  
       const post = {
-        author: $(element).find('.tgme_widget_message_owner_name').text().trim(),
+        author: $message.find('.tgme_widget_message_owner_name').text().trim(),
         timestamp: $(element).find('.time').text().trim(),
-        content: $(element).find('.tgme_widget_message_text').html(), // Use .html() instead of .text()
-        url: `https://t.me${$(element).find('.tgme_widget_message_date').attr('href')}`,
-        image: $(element).find('.tgme_widget_message_photo_wrap img').attr('src') || '',
+        content: $message.find('.tgme_widget_message_text').html() || null,
+        url: `https://t.me${$message.find('.tgme_widget_message_date').attr('href')}`,
       };
+
+ 
+     
+
+      // Handle single image
+      const singleImageUrl = $message.find('.tgme_widget_message_photo_wrap').css('background-image');
+      if (singleImageUrl) {
+        post.image = singleImageUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+      }
+
+      // Handle gallery
+      const galleryImages = [];
+      $message.find('.tgme_widget_message_photo_wrap.grouped_media_wrap').each((_, galleryImage) => {
+        const imageUrl = $(galleryImage).css('background-image');
+        if (imageUrl) {
+          galleryImages.push(imageUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, ''));
+        }
+      });
+      if (galleryImages.length > 0) {
+        post.gallery = galleryImages;
+      }
+
+      const videoUrl = $message.find('video').attr('src');
+      if (videoUrl) {
+        post.video = videoUrl;
+      }
+
       posts.push(post);
     });
 
-    const latestPosts = posts.slice(-3).reverse();
+    const latestPosts = posts.slice(-10).reverse();
 
     res.json(latestPosts);
   } catch (error) {
