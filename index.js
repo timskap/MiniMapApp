@@ -61,6 +61,14 @@ app.get('/feed', async (req, res) => {
         post.gallery = galleryImages;
       }
 
+      const videoThumbnailUrl = $message.find('.tgme_widget_message_video_thumb').css('background-image');
+      if (videoThumbnailUrl) {
+        const regex = /url\('(.+)'\)/;
+        const match = regex.exec(videoThumbnailUrl);
+        if (match) {
+          post.videoBackground = match[1];
+        }
+      }
       const videoUrl = $message.find('video').attr('src');
       if (videoUrl) {
         post.video = videoUrl;
