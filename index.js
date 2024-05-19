@@ -11,16 +11,17 @@ app.use(express.static('public'));
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index');
+  res.render('index', { currentPage: 'home', pageTitle: 'Home' });
 });
 
 app.get('/privacy', (req, res) => {
-    res.render('privacy');
+  res.render('privacy', { currentPage: 'privacy', pageTitle: 'Privacy Policy' });
 });
 
 app.get('/contest', (req, res) => {
-  res.render('contest');
+  res.render('contest', { currentPage: 'contest', pageTitle: 'Contest' });
 });
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
@@ -46,9 +47,6 @@ app.get('/feed', async (req, res) => {
         content: $message.find('.tgme_widget_message_text').html() || null,
         url: `https://t.me${$message.find('.tgme_widget_message_date').attr('href')}`,
       };
-
- 
-     
 
       // Handle single image
       const singleImageUrl = $message.find('.tgme_widget_message_photo_wrap').css('background-image');
