@@ -1,19 +1,26 @@
 const express = require('express');
-const app = express();
-const port = 8080;
 const axios = require('axios');
 const cheerio = require('cheerio');
+const app = express();
+const port = 8080;
+
+app.set('view engine', 'ejs');
+app.set('views', './views'); // This is where your EJS templates will be stored
 
 app.use(express.static('public'));
 
+// Routes
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.render('index');
 });
 
 app.get('/privacy', (req, res) => {
-    res.sendFile(__dirname + '/public/privacy.html');
+    res.render('privacy');
 });
 
+app.get('/contest', (req, res) => {
+  res.render('contest');
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
