@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <%- include('partials/head'); %> <!-- Externalize head content if needed -->
+    <meta name="description" content="MiniMap Radar - Your Ultimate Navigation Companion. Transform your Apple Watch into a GTA-style mini-map for immersive real-world navigation. Features AR mode, custom markers, and fitness tracking.">
+    <meta name="keywords" content="Apple Watch navigation, GTA style mini-map, AR navigation, fitness tracking, real-time navigation, custom markers, location tracking, smart navigation app">
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/custom.css" rel="stylesheet" />
 </head>
@@ -16,9 +18,9 @@
                     <!-- Mashead text and app badges-->
                     <div class="mb-5 mb-lg-0 text-center text-lg-start">
                         <h1 class="display-1 lh-1 mb-3">Surf your life like a game</h1>
-                        <p class="lead fw-normal text-muted mb-5">Dive into an innovative navigation experience with MiniMap Radar. Seamlessly melding real-world exploration with digital precision, this app ensures you'll never miss a beat while navigating.</p>
+                        <p class="lead fw-normal text-muted mb-5">Experience the future of navigation with MiniMap Radar - where real-world exploration meets gaming innovation. Perfect for urban adventurers, fitness enthusiasts, and tech-savvy explorers. Transform your daily commute into an immersive quest with our cutting-edge AR navigation system.</p>
                         <div class="d-flex flex-column flex-lg-row align-items-center">
-                            <a href="https://apps.apple.com/us/app/minimap-radar/id6467383947"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="App Store Mini-Map Radar" /></a>
+                            <a href="https://apps.apple.com/us/app/minimap-radar/id6467383947"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="Download MiniMap Radar on App Store - Your Ultimate Navigation Companion" /></a>
                         </div>
                     </div>
                 </div>
@@ -72,57 +74,49 @@
         </div>
     </header>
     <!-- Quote/testimonial aside-->
-<!-- Quote/testimonial carousel -->
-<aside class="text-center bg-gradient-primary-to-secondary">
-<div class="container px-5">
-    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-        <!-- Indicators/dots -->
+    <aside class="text-center bg-gradient-primary-to-secondary">
+        <div class="container px-5">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-xl-8">
+                                <div class="h2 fs-1 text-white mb-4">Developed by Timur Abdrakhimov, MiniMap Radar makes going home or visiting the gym a truly immersive quest</div>
+                                <img src="https://cdn.80.lv/static/icons/logo.svg" alt="80.lv - Game Development Community" style="height: 50px;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-xl-8">
+                                <div class="h2 fs-1 text-white mb-4">"Fantastic Reality like in Isaac Azimov books! – Stas 'I Kak Goida' Vasiliev"</div>
+                                <img src="assets/img/DJkI198WBWI.jpg" alt="Stas Vasiliev - Tech Enthusiast" style="height: 10rem; border-radius: 100px;">
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Carousel content -->
-        <div class="carousel-inner">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="h2 fs-1 text-white mb-4">Developed by Timur Abdrakhimov, MiniMap Radar makes going home or visiting the gym a truly immersive quest</div>
-                        <img src="https://cdn.80.lv/static/icons/logo.svg" alt="Testimonial 1" style="height: 50px;">
-                        <!-- Image or additional content for the second slide -->
+                    <div class="carousel-item">
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-xl-8">
+                                <div class="h2 fs-1 text-white mb-4">$0.99 for such fun is not a pity at all, but I hope the next updates will have wanted level stars and other Easter eggs!</div>
+                                <img src="assets/img/wylsa.png" alt="Wylsa - Tech Review Platform" style="height: 30px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="h2 fs-1 text-white mb-4">"Fantastic Reality like in Isaac Azimov books! – Stas 'I Kak Goida' Vasiliev"</div>
-                        <img src="assets/img/DJkI198WBWI.jpg" alt="Testimonial 1" style="height: 10rem; border-radius: 100px;">
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="h2 fs-1 text-white mb-4">$0.99 for such fun is not a pity at all, but I hope the next updates will have wanted level stars and other Easter eggs!</div>
-                        <img src="assets/img/wylsa.png" alt="Testimonial 1" style="height: 30px;">
-                    </div>
-                </div>
-            </div>
-            <!-- Add more carousel-item divs for additional slides -->
         </div>
-
-        <!-- Carousel controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-</aside>
+    </aside>
     <!-- App features section-->
     <section id="features">
         <div class="container px-5">
@@ -135,7 +129,7 @@
                                 <div class="text-center">
                                     <i class="bi-smartwatch icon-feature text-gradient d-block mb-3"></i>
                                     <h3 class="font-alt">Dynamic Mini Map</h3>
-                                    <p class="text-muted mb-0">Transform your Apple Watch into a GTA-themed mini-map. Navigate your surroundings with an interactive map right on your wrist.</p>
+                                    <p class="text-muted mb-0">Transform your Apple Watch into a GTA-themed mini-map. Navigate your surroundings with an interactive map right on your wrist. Perfect for urban exploration and real-time navigation.</p>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-5">
@@ -143,7 +137,7 @@
                                 <div class="text-center">
                                     <i class="bi-pin-map-fill icon-feature text-gradient d-block mb-3"></i>
                                     <h3 class="font-alt">Customizable Markers</h3>
-                                    <p class="text-muted mb-0">Easily place and edit markers using your iPhone. Watch as they seamlessly sync with your Apple Watch for on-the-go navigation.</p>
+                                    <p class="text-muted mb-0">Create and manage custom markers with ease on your iPhone. Seamlessly sync with your Apple Watch for on-the-go navigation. Ideal for marking favorite locations and important destinations.</p>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +147,7 @@
                                 <div class="text-center">
                                     <i class="bi-eye-fill icon-feature text-gradient d-block mb-3"></i>
                                     <h3 class="font-alt">Augmented Reality (AR) Mode</h3>
-                                    <p class="text-muted mb-0">Experience an immersive AR mode on your iPhone. View and interact with your markers in a real-world context.</p>
+                                    <p class="text-muted mb-0">Immerse yourself in our cutting-edge AR mode on your iPhone. View and interact with your markers in real-world context. Experience navigation like never before with our innovative AR technology.</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -161,7 +155,7 @@
                                 <div class="text-center">
                                     <i class="bi-activity icon-feature text-gradient d-block mb-3"></i>
                                     <h3 class="font-alt">Fitness and Health Integration</h3>
-                                    <p class="text-muted mb-0">Engage in a unique walking training mode. Monitor your heart rate displayed as a health bar, blending fitness with gaming aesthetics.</p>
+                                    <p class="text-muted mb-0">Transform your fitness journey with our unique walking training mode. Monitor your heart rate displayed as a health bar, blending fitness with gaming aesthetics. Perfect for health-conscious adventurers.</p>
                                 </div>
                             </div>
                         </div>
@@ -201,9 +195,10 @@
     <!-- App badge section-->
     <section class="bg-gradient-primary-to-secondary" id="download">
         <div class="container px-5">
-            <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
+            <h2 class="text-center text-white font-alt mb-4">Transform Your Navigation Experience Today!</h2>
+            <p class="text-center text-white mb-4">Join thousands of users who have revolutionized their daily navigation with MiniMap Radar. Perfect for urban explorers, fitness enthusiasts, and tech-savvy adventurers.</p>
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
-                <a href="https://apps.apple.com/us/app/minimap-radar/id6467383947"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="App Store Mini-Map Radar" /></a>
+                <a href="https://apps.apple.com/us/app/minimap-radar/id6467383947"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="Download MiniMap Radar - Your Ultimate Navigation Companion" /></a>
             </div>
         </div>
     </section>

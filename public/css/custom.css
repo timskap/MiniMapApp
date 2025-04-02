@@ -3,39 +3,230 @@
 }
 
 .post {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-  }
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 
-  .post p {
-    margin-bottom: 0px;
-  }
+.post:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
 
-  .scroll-container {
-    height: 500px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-shadow: 0 0 6px #b1b1b1;
-    border-radius: 10px;
-    }
-    .video-container {
-        position: relative;
-      }
-      
-      .video-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
-      }
-      .pinned-post {
-        font-weight: bold;
-        color: #ff6600;
-      }
+.post p {
+  margin-bottom: 10px;
+  color: #333333;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.post a {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  display: inline-block;
+  color: #0066cc;
+}
+
+.post a:hover {
+  text-decoration: underline;
+}
+
+.post img {
+  border-radius: 8px;
+  margin: 10px 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.post video {
+  border-radius: 8px;
+  margin: 10px 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.scroll-container {
+  height: 500px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.pinned-post {
+  font-weight: 600;
+  color: #00a86b;
+  background: rgba(0, 168, 107, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
+.video-container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+/* Carousel Styles */
+.carousel {
+  padding: 2rem 0;
+}
+
+.carousel-item {
+  padding: 2rem 0;
+  opacity: 0;
+}
+
+.carousel-item .h2 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 0 1rem;
+}
+
+.carousel-item .h2::before,
+.carousel-item .h2::after {
+  content: '"';
+  font-size: 4rem;
+  position: absolute;
+  opacity: 0.2;
+  color: #fff;
+}
+
+.carousel-item .h2::before {
+  left: -1rem;
+  top: -0.5rem;
+}
+
+.carousel-item .h2::after {
+  right: -1rem;
+  bottom: -0.5rem;
+}
+
+.carousel-item img {
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 1.5rem;
+  background-size: 50%;
+}
+
+.carousel-indicators {
+  bottom: -2rem;
+}
+
+.carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+/* Add animation for carousel items */
+.carousel-item.active {
+  animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-item .h2 {
+    font-size: 2rem;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item .h2 {
+    font-size: 1.5rem;
+  }
+  
+  .carousel-item .h2::before,
+  .carousel-item .h2::after {
+    font-size: 3rem;
+  }
+}
