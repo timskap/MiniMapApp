@@ -4,10 +4,11 @@ const cheerio = require('cheerio');
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.set('view engine', 'ejs');
-app.set('views', './views'); // This is where your EJS templates will be stored
-
+// Middleware
+app.use(express.json());
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
 // Routes
 app.get('/', (req, res) => {
@@ -21,13 +22,6 @@ app.get('/privacy', (req, res) => {
 app.get('/contest', (req, res) => {
   res.render('contest', { currentPage: 'contest', pageTitle: 'Contest' });
 });
-
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-
 
 app.get('/feed', async (req, res) => {
   try {
@@ -83,10 +77,14 @@ app.get('/feed', async (req, res) => {
     });
 
     const latestPosts = posts.slice(-10).reverse();
-
     res.json(latestPosts);
   } catch (error) {
     console.error('Error fetching feed:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+}); 
