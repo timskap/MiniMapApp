@@ -12,15 +12,27 @@ app.set('views', './views');
 
 // Routes
 app.get('/', (req, res) => {
-  res.render('index', { currentPage: 'home', pageTitle: 'Home' });
+  res.render('index', {
+    currentPage: 'home',
+    pageTitle: 'MiniMap Radar — GTA-Style Navigation for Apple Watch',
+    canonicalUrl: 'https://mini-map.app/'
+  });
 });
 
 app.get('/privacy', (req, res) => {
-  res.render('privacy', { currentPage: 'privacy', pageTitle: 'Privacy Policy' });
+  res.render('privacy', {
+    currentPage: 'privacy',
+    pageTitle: 'Privacy Policy — MiniMap Radar',
+    canonicalUrl: 'https://mini-map.app/privacy'
+  });
 });
 
 app.get('/contest', (req, res) => {
-  res.render('contest', { currentPage: 'contest', pageTitle: 'Contest' });
+  res.render('contest', {
+    currentPage: 'contest',
+    pageTitle: 'Contest — MiniMap Radar',
+    canonicalUrl: 'https://mini-map.app/contest'
+  });
 });
 
 app.get('/feed', async (req, res) => {
